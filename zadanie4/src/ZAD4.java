@@ -1,6 +1,6 @@
 public class ZAD4 {
     static final Object obj = new Object();
-    static volatile char ch = 'A';
+    static char ch = 'A';
 
     public static void main(String[] args) {
         new Thread(new A()).start();
@@ -19,7 +19,7 @@ public class ZAD4 {
                             obj.wait();
                         System.out.print("A");
                         ch = 'B';
-                        obj.notifyAll();
+                        obj.notify();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -38,7 +38,7 @@ public class ZAD4 {
                             obj.wait();
                         System.out.print("B");
                         ch = 'C';
-                        obj.notifyAll();
+                        obj.notify();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -57,7 +57,7 @@ public class ZAD4 {
                             obj.wait();
                         System.out.print("C");
                         ch = 'A';
-                        obj.notifyAll();
+                        obj.notify();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
